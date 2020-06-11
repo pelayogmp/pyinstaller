@@ -1,0 +1,38 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+tinyaes = "~=1.0"
+lxml = "*"
+pypiwin32 = "*"
+flake8-diff = "*"
+psutil = "*"
+pytest-drop-dup-tests = "*"
+pytest = "*"
+execnet = "*"
+pytest-xdist = "*"
+ipython = "*"
+pyreadline = "*"
+pycmd = "*"
+wheel = "*"
+twine = "*"
+towncrier = "*"
+zest-releaser = "*"
+check-manifest = "*"
+pyroma = "*"
+chardet = "*"
+readme = "*"
+zestreleaser-towncrier = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
+
+[packages]
+altgraph = "*"
+pefile = "*"
+pywin32-ctypes = "*"
+macholib = "*"
+
+[requires]
+python_version = "3.7"
