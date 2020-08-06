@@ -743,7 +743,7 @@ class Manifest(object):
             domtree = minidom.parse(filename_or_file)
         except xml.parsers.expat.ExpatError as e:
             args = ['\n  File "%r"\n   ' % filename, str(e.args[0])]
-            raise ManifestXMLParseError(" ".join(args))
+            raise ManifestXMLParseError(" ".join(args)) from e
         if initialize:
             self.__init__()
         self.filename = filename
@@ -754,7 +754,7 @@ class Manifest(object):
         try:
             domtree = minidom.parseString(xmlstr)
         except xml.parsers.expat.ExpatError as e:
-            raise ManifestXMLParseError(e)
+            raise ManifestXMLParseError(e) from e
         self.load_dom(domtree, initialize)
 
     def same_id(self, manifest, skip_version_check=False):
@@ -1061,6 +1061,8 @@ def create_manifest(filename, manifest, console, uac_admin=False, uac_uiaccess=F
             )
     if uac_admin:
         manifest.requestedExecutionLevel = 'requireAdministrator'
+    else:
+        manifest.requestedExecutionLevel = 'asInvoker'
     if uac_uiaccess:
         manifest.uiAccess = True
 
